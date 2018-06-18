@@ -9,10 +9,10 @@ class StorePicker extends React.Component{
 
   myInput = React.createRef();
 
-  goToStore(event){
+  goToStore = (event)=>{
     event.preventDefault();
-    console.log(this.myInput);
-
+    const storeName = this.myInput.current.value;
+    this.props.history.push(`/store/${storeName}`)
   }
 
   render(){
