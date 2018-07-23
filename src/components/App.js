@@ -41,7 +41,7 @@ render(){
                     addToOrder={this.addToOrder}/>)}
             </ul>
         </div>
-       <Order order={this.state.order} fish={this.state.fishes}/>
+       <Order order={this.state.order} fishes={this.state.fishes}/>
        <Inventory addFish={this.addFish} loadSampleFishes={this.loadSampleFishes}/>
     </div>
     )
