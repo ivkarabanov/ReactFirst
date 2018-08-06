@@ -54,7 +54,7 @@ render(){
             </ul>
         </div>
        <Order order={this.state.order} fishes={this.state.fishes}/>
-       <Inventory addFish={this.addFish} loadSampleFishes={this.loadSampleFishes}/>
+       <Inventory addFish={this.addFish} fishes={this.state.fishes} loadSampleFishes={this.loadSampleFishes}/>
     </div>
     )
 }
