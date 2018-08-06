@@ -30,7 +30,12 @@ addToOrder = (key) => {
     this.setState({order});
 }
 
-componentWillMount(){
+componentDidMount(){
+
+    var localStorageRef = localStorage.getItem(this.props.match.params.storeId);
+    if (localStorageRef){
+        this.setState({order: JSON.parse(localStorageRef)});
+    }
     this. ref = base.syncState(`${this.props.match.params.storeId}/fishes`, {
         context: this,
         state: 'fishes'
@@ -39,6 +44,11 @@ componentWillMount(){
 
 componentWillUnmount(){
     base.removeBinding(this.ref);
+}
+
+componentDidUpdate(){
+    localStorage.setItem(this.props.match.params.storeId, JSON.stringify( this.state.order));
+    console.log('IT updated.');
 }
 
 render(){
