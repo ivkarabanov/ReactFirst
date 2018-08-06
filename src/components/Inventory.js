@@ -1,16 +1,38 @@
 import React from "react";
-import AddFishForm from './AddFishForm'
+import AddFishForm from './AddFishForm';
+import {formatPrice} from '../helpers';
 
 
 class Inventory extends React.Component{
+constructor(){
+    super();
+    this.renderInventory = this.renderInventory.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(e, key){
+        const fish = this.props.fishes[key];
+        const updatedFish = {...fish,
+            [e.target.name]: e.target.value};
+        console.log(updatedFish);    
+        this.props.updateFish(key,updatedFish);
+
+    }
+
     renderInventory(key){
+        const fish = this.props.fishes[key];
+        return (
         <div className="fish-edit" key={key}>
-            <input type="text" name="name" placeholder="Fish Name"/>
-            <input type="text" name="price" placeholder="Fish Price"/>
-            <input type="text" name="status" placeholder="Fish Status"/>
-            <input type="text" name="desc" placeholder="Fish Desc"/>
-            <input type="text" name="image" placeholder="Fish Image"/>
-        </div>
+            <input type="text" name="name" placeholder="Fish Name" value={fish.name}
+                onChange={(e)=>this.handleChange(e,key)}/>
+            <input type="text" name="price" placeholder="Fish Price" value={formatPrice(fish.price)}/>
+            <select type="text" name="status" placeholder="Fish Status" value={fish.status}>
+                <option value="available">Fresh</option>
+                <option value="unavailable">Sold Out</option>
+            </select>
+            <textarea type="text" name="desc" placeholder="Fish Desc" value={fish.desc}></textarea>
+            <input type="text" name="image" placeholder="Fish Image" value={fish.image}/>
+        </div>)
     }
 
     render(){

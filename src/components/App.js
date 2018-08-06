@@ -7,10 +7,21 @@ import sampleFishes from '../sample-fishes';
 import base from '../base';
 
 class App extends React.Component{
-    state = {
-        fishes: {},
-        order: {}
-    };
+
+    constructor(){
+        super();
+
+        this.updateFish = this.updateFish.bind(this);
+        this.addFish = this.addFish.bind(this);
+        this.loadSampleFishes = this.loadSampleFishes.bind(this);
+        this.addToOrder = this.addToOrder.bind(this);
+
+        this.state = {
+            fishes: {},
+            order: {}
+        };
+    }
+
 addFish = (fish) =>{
     const fishes = {...this.state.fishes};
     fishes[`fish${Date.now()}`] = fish;
@@ -28,6 +39,14 @@ addToOrder = (key) => {
     const order = {...this.state.order};
     order[key] = order[key] +1 || 1;
     this.setState({order});
+}
+
+updateFish(key, fish){
+    const fishes = {...this.state.fishes};
+    fishes[key] = fish;
+    console.log(fish); 
+    this.setState({fishes});
+
 }
 
 componentDidMount(){
@@ -64,7 +83,11 @@ render(){
             </ul>
         </div>
        <Order order={this.state.order} fishes={this.state.fishes}/>
-       <Inventory addFish={this.addFish} fishes={this.state.fishes} loadSampleFishes={this.loadSampleFishes}/>
+       <Inventory 
+        addFish={this.addFish}
+        fishes={this.state.fishes}
+        loadSampleFishes={this.loadSampleFishes}
+        updateFish={this.updateFish}/>
     </div>
     )
 }
