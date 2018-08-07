@@ -15,6 +15,8 @@ class App extends React.Component{
         this.addFish = this.addFish.bind(this);
         this.loadSampleFishes = this.loadSampleFishes.bind(this);
         this.addToOrder = this.addToOrder.bind(this);
+        this.removeFish = this.removeFish.bind(this);
+        this.removeFromOrder = this.removeFromOrder.bind(this);
 
         this.state = {
             fishes: {},
@@ -41,12 +43,24 @@ addToOrder = (key) => {
     this.setState({order});
 }
 
+removeFromOrder = (key) =>{
+    const order = {...this.state.order};
+    delete order[key];
+    this.setState({order});
+}
+
 updateFish(key, fish){
     const fishes = {...this.state.fishes};
     fishes[key] = fish;
     console.log(fish); 
     this.setState({fishes});
 
+}
+
+removeFish(key){
+    const fishes= {...this.state.fishes};
+    fishes[key]= null;
+    this.setState({fishes});
 }
 
 componentDidMount(){
@@ -82,12 +96,14 @@ render(){
                     addToOrder={this.addToOrder}/>)}
             </ul>
         </div>
-       <Order order={this.state.order} fishes={this.state.fishes}/>
+       <Order order={this.state.order} fishes={this.state.fishes}
+            removeFromOrder= {this.removeFromOrder}/>
        <Inventory 
-        addFish={this.addFish}
-        fishes={this.state.fishes}
-        loadSampleFishes={this.loadSampleFishes}
-        updateFish={this.updateFish}/>
+            addFish={this.addFish}
+            fishes={this.state.fishes}
+            loadSampleFishes={this.loadSampleFishes}
+            updateFish={this.updateFish}
+            removeFish= {this.removeFish}/>
     </div>
     )
 }

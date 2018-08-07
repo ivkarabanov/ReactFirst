@@ -25,13 +25,16 @@ constructor(){
         <div className="fish-edit" key={key}>
             <input type="text" name="name" placeholder="Fish Name" value={fish.name}
                 onChange={(e)=>this.handleChange(e,key)}/>
-            <input type="text" name="price" placeholder="Fish Price" value={formatPrice(fish.price)}/>
-            <select type="text" name="status" placeholder="Fish Status" value={fish.status}>
+            <input type="text" name="price" placeholder="Fish Price" value={formatPrice(fish.price)}
+                onChange={(e)=>this.handleChange(e,key)}/>
+            <select type="text" name="status" placeholder="Fish Status" value={fish.status}
+                onChange={(e)=>this.handleChange(e,key)}>
                 <option value="available">Fresh</option>
                 <option value="unavailable">Sold Out</option>
             </select>
-            <textarea type="text" name="desc" placeholder="Fish Desc" value={fish.desc}></textarea>
-            <input type="text" name="image" placeholder="Fish Image" value={fish.image}/>
+            <textarea type="text" name="desc" placeholder="Fish Desc" value={fish.desc} onChange={(e)=>this.handleChange(e,key)}></textarea>
+            <input type="text" name="image" placeholder="Fish Image" value={fish.image} onChange={(e)=>this.handleChange(e,key)}/>
+            <button onClick={() => this.props.removeFish(key)}>Remove Fish</button>
         </div>)
     }
 
