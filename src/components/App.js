@@ -69,7 +69,7 @@ componentDidMount(){
     if (localStorageRef){
         this.setState({order: JSON.parse(localStorageRef)});
     }
-    this. ref = base.syncState(`${this.props.match.params.storeId}/fishes`, {
+    this.ref = base.syncState(`${this.props.match.params.storeId}/fishes`, {
         context: this,
         state: 'fishes'
     });
