@@ -24,8 +24,8 @@ class Order extends React.Component{
                         className="count"
                         transitionName="count"
                         component="span"
-                        transitionEnterTimeout={2500}
-                        transitionLeaveTimeout={2500}>
+                        transitionEnterTimeout={250}
+                        transitionLeaveTimeout={250}>
                     <span key={count}>{count}</span>
                     </ReactCSSTransitionGroup>
                     lbs {fish.name}</span> {removeButton}

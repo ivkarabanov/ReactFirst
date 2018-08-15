@@ -36,16 +36,27 @@
   padding: 0;
 }
 .count-enter {
-  -webkit-transition: 2.5s;
-  transition: 2.5s;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
   -webkit-transform: translateY(100%);
           transform: translateY(100%);
-  background: #f00;
 }
 .count-enter.count-enter-active {
-  background: #ff0;
   -webkit-transform: translateY(0);
           transform: translateY(0);
+}
+.count-leave {
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.count-leave.count-leave-active {
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
 }
 @font-face {
   font-family: "haymakerregular";
