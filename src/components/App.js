@@ -88,7 +88,7 @@ render(){
     return(
     <div className="catch-of-the-day">
         <div className="menu">
-            <Header tagline="Fresh Seafood Market"/>
+            <Header tagline={500}/>
             <ul className="list-of-fishes">
                 {Object.keys(this.state.fishes).map(key => 
                     <Fish key={key} index={key}
