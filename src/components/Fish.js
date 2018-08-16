@@ -1,5 +1,6 @@
 import React from "react";
 import {formatPrice} from '../helpers'
+import PropTypes from 'prop-types';
 
 class Fish extends React.Component{
     handleClick =() => {
@@ -19,7 +20,13 @@ class Fish extends React.Component{
             {isAvaiable? 'Add To Cart' : 'Sold Out!'}</button>
         </li>
     )
+    }
 }
-}
+
+Fish.propTypes={
+    details : PropTypes.object.isRequired,
+    index : PropTypes.number.isRequired, 
+    addToOrder : PropTypes.func.isRequired
+};
 
 export default Fish;

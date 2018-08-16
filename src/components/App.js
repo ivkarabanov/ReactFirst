@@ -5,6 +5,7 @@ import Fish from './Fish'
 import Inventory from "./Inventory";
 import sampleFishes from '../sample-fishes';
 import base from '../base';
+import PropTypes from 'prop-types';
 
 class App extends React.Component{
 
@@ -88,7 +89,7 @@ render(){
     return(
     <div className="catch-of-the-day">
         <div className="menu">
-            <Header tagline={500}/>
+            <Header tagline="Fresh Seafood Market"/>
             <ul className="list-of-fishes">
                 {Object.keys(this.state.fishes).map(key => 
                     <Fish key={key} index={key}
@@ -107,6 +108,10 @@ render(){
     </div>
     )
 }
+}
+
+App.propTypes = {
+    match: PropTypes.object.isRequired
 }
 
 export default App;
